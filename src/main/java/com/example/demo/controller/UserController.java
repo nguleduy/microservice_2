@@ -34,7 +34,7 @@ public class UserController {
   }
 
   @GetMapping("/nids/{nid}")
-  public Nid getNid(@PathVariable String nid) {
+  public Nid getNid(@PathVariable Long nid) {
     return iNidRepository.findById(nid).get();
   }
 

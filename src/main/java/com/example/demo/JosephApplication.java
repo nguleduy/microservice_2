@@ -33,8 +33,8 @@ public class JosephApplication implements CommandLineRunner {
     iUserRepository.save(new User("two", "two"));
     iUserRepository.save(new User("three", "three"));
 
-    iPassportRepository.save(new Passport("joseph","nguleduy@gmail.com","Joseph","Le","12345","05-12-1989"));
+    iPassportRepository.save(new Passport(1L,"nguleduy@gmail.com","Joseph","Le","12345","05-12-1989"));
 
-    iNidRepository.save(new Nid("joseph","Joseph","Le","12345","05-12-1989"));
+    iNidRepository.save(new Nid(1L,"Joseph","Le","12345","05-12-1989"));
   }
 }

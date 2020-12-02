@@ -7,7 +7,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
@@ -18,10 +20,14 @@ import java.io.Serializable;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@IdClass(Passport.class)
 public class Passport implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+
   @Id
-  private String nid;
+  @GeneratedValue
+  private Long nid;
 
   @Id
   @Email(message = "Enter a valid email")

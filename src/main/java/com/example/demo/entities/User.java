@@ -19,11 +19,10 @@ public class User {
   @Id
   @GeneratedValue
   private Long id;
+
   private String fName;
+
   private String lName;
-  private Long nid;
-  private String ppid;
-  private String birthdate;
 
   public User(String fName, String lName) {
     this.fName = fName;

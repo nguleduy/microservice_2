@@ -7,8 +7,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Entity
 @Setter
@@ -16,10 +19,14 @@ import javax.validation.constraints.NotBlank;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Nid {
+@IdClass(Nid.class)
+public class Nid implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   @Id
-  private String nid;
+  @GeneratedValue
+  private Long nid;
 
   @NotBlank(message = "Enter your first name")
   private String fName;

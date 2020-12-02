@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.entities.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JosephApplication implements CommandLineRunner {
 
   @Autowired
-  private UserRepository userRepository;
+  private IUserRepository IUserRepository;
 
   public static void main(String[] args) {
     SpringApplication.run(JosephApplication.class, args);
@@ -19,8 +19,8 @@ public class JosephApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    userRepository.save(new User("one", "one"));
-    userRepository.save(new User("two", "one"));
-    userRepository.save(new User("three", "one"));
+    IUserRepository.save(new User("one", "one"));
+    IUserRepository.save(new User("two", "one"));
+    IUserRepository.save(new User("three", "one"));
   }
 }

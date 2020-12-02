@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,31 +21,31 @@ import java.util.List;
 public class UserController {
 
   @Autowired
-  private UserRepository userRepository;
+  private IUserRepository iUserRepository;
 
   @GetMapping("/users")
   public List<User> getUsers() {
-    return userRepository.findAll();
+    return iUserRepository.findAll();
   }
 
   @GetMapping("/user/{id}")
   public User getUser(@PathVariable Long id) {
-    return userRepository.findById(id).get();
+    return iUserRepository.findById(id).get();
   }
 
   @DeleteMapping("/user/{id}")
   public boolean deleteUser(@PathVariable Long id) {
-    userRepository.deleteById(id);
+    iUserRepository.deleteById(id);
     return true;
   }
 
   @PutMapping("/user")
   public User updateUser(@RequestBody User user) {
-    return userRepository.save(user);
+    return iUserRepository.save(user);
   }
 
   @PostMapping("/user")
   public User createUser(@RequestBody User user) {
-    return userRepository.save(user);
+    return iUserRepository.save(user);
   }
 }

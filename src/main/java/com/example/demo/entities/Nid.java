@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,10 +15,11 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Nid {
 
   @Id
-  private Long nid;
+  private String nid;
 
   @NotBlank(message = "Enter your first name")
   private String fName;
@@ -25,9 +27,9 @@ public class Nid {
   @NotBlank(message = "Enter your last name")
   private String lName;
 
-  @NotBlank(message = "Enter your name")
+  @NotBlank(message = "Enter your ppid")
   private String ppid;
 
-  @NotBlank(message = "Enter your name")
+  @NotBlank(message = "Enter your birthdate")
   private String birthdate;
 }

@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Nid;
+import com.example.demo.entities.Passport;
 import com.example.demo.entities.User;
 import com.example.demo.repository.INidRepository;
+import com.example.demo.repository.IPassportRepository;
 import com.example.demo.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,14 +30,27 @@ public class UserController {
   @Autowired
   private INidRepository iNidRepository;
 
+  @Autowired
+  private IPassportRepository iPassportRepository;
+
   @GetMapping("/nids")
   public List<Nid> getNids() {
     return iNidRepository.findAll();
   }
 
-  @GetMapping("/nids/{nid}")
-  public Nid getNid(@PathVariable Long nid) {
-    return iNidRepository.findById(nid).get();
+  @GetMapping("/nids/{id}")
+  public Nid getNid(@PathVariable Long id) {
+    return iNidRepository.findById(id).orElseThrow();
+  }
+
+  @GetMapping("/passports")
+  public List<Passport> getPassports() {
+    return iPassportRepository.findAll();
+  }
+
+  @GetMapping("/passports/{id}")
+  public Passport getPassport(Long id) {
+    return iPassportRepository.findById(id).orElseThrow();
   }
 
   @GetMapping("/users")
@@ -45,7 +60,7 @@ public class UserController {
 
   @GetMapping("/user/{id}")
   public User getUser(@PathVariable Long id) {
-    return iUserRepository.findById(id).get();
+    return iUserRepository.findById(id).orElseThrow();
   }
 
   @DeleteMapping("/user/{id}")

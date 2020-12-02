@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class UserFormComponent implements OnInit {
 
-  private user: User;
+  public user: User;
 
   constructor(private userService: UserService, private router: Router) {
   }

@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class ListUserComponent implements OnInit {
 
-  private users: User[];
+  public users: User[];
 
   constructor(private userService: UserService, private router: Router) {
   }

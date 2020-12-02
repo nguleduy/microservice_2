@@ -29,9 +29,7 @@ public class JosephApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    iUserRepository.save(new User("one", "one"));
-    iUserRepository.save(new User("two", "two"));
-    iUserRepository.save(new User("three", "three"));
+    iUserRepository.save(new User("ABC", "XYZ"));
 
     iPassportRepository.save(new Passport(1L,"nguleduy@gmail.com","Joseph","Le","12345","05-12-1989"));
 

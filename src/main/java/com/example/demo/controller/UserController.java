@@ -33,6 +33,10 @@ public class UserController {
   @Autowired
   private IPassportRepository iPassportRepository;
 
+  /***
+   *
+   * Nid
+   */
   @GetMapping("/nids")
   public List<Nid> getNids() {
     return iNidRepository.findAll();
@@ -43,6 +47,26 @@ public class UserController {
     return iNidRepository.findById(id).orElseThrow();
   }
 
+  @PostMapping("/nid")
+  public Nid createNid(@RequestBody Nid newNid) {
+    return iNidRepository.save(newNid);
+  }
+
+  @DeleteMapping("/nids/{id}")
+  public boolean deleteNid(@PathVariable Long id) {
+    iNidRepository.deleteById(id);
+    return true;
+  }
+
+  @PutMapping("/nid")
+  public Nid updateNid(@RequestBody Nid newNid) {
+    return iNidRepository.save(newNid);
+  }
+
+  /***
+   *
+   * Passport
+   */
   @GetMapping("/passports")
   public List<Passport> getPassports() {
     return iPassportRepository.findAll();
@@ -53,6 +77,26 @@ public class UserController {
     return iPassportRepository.findById(id).orElseThrow();
   }
 
+  @PostMapping("/passport")
+  public Passport createPassport(@RequestBody Passport newPassport) {
+    return iPassportRepository.save(newPassport);
+  }
+
+  @DeleteMapping("/passports/{id}")
+  public boolean deletePassport(@PathVariable Long id) {
+    iPassportRepository.deleteById(id);
+    return true;
+  }
+
+  @PutMapping("/passport")
+  public Passport updatePassport(@RequestBody Passport newPassport) {
+    return iPassportRepository.save(newPassport);
+  }
+
+  /***
+   *
+   * User
+   */
   @GetMapping("/users")
   public List<User> getUsers() {
     return iUserRepository.findAll();

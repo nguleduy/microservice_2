@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user';
 import {UserService} from '../../shared-service/user.service';
 import {Router} from '@angular/router';
+import {Nid} from '../../model/Nid';
+import {Passport} from '../../model/Passport';
 
 @Component({
   selector: 'app-list-user',
@@ -11,6 +13,8 @@ import {Router} from '@angular/router';
 export class ListUserComponent implements OnInit {
 
   public users: User[];
+  public nids: Nid[];
+  public passports: Passport[];
 
   constructor(private userService: UserService, private router: Router) {
   }
@@ -22,8 +26,27 @@ export class ListUserComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+
+    this.userService.getNids().subscribe((nids) => {
+      console.log(nids);
+      this.nids = nids;
+    }, (error) => {
+      console.log(error);
+    });
+
+    this.userService.getPassports().subscribe((passports) => {
+      console.log(passports);
+      this.passports = passports;
+    }, (error) => {
+      console.log(error);
+    });
   }
 
+  /** Nid actions */
+  createNid() {
+  }
+
+  /** User actions */
   deleteUser(user): void {
     this.userService.deleteUser(user.id).subscribe((data) => {
       this.users.splice(this.users.indexOf(user), 1);

@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../model/user';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Nid} from '../model/Nid';
+import {Passport} from '../model/Passport';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +15,26 @@ export class UserService {
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   private options = {headers: this.headers};
   private user = new User();
+  private nid = new Nid();
+  private passport = new Passport();
 
   constructor(private http: HttpClient) {
+  }
+
+  getNids(): Observable<any> {
+    return this.http.get(this.baseUrl + '/nids', this.options).pipe(catchError(this.handleError));
+  }
+
+  getNid(id: number): any {
+    return this.http.get(this.baseUrl + '/nids/' + id, this.options).pipe(catchError(this.handleError));
+  }
+
+  getPassports(): Observable<any> {
+    return this.http.get(this.baseUrl + '/passports', this.options).pipe(catchError(this.handleError));
+  }
+
+  getPassport(id: number): any {
+    return this.http.get(this.baseUrl + '/passports/' + id, this.options).pipe(catchError(this.handleError));
   }
 
   getUsers(): Observable<any> {

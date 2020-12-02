@@ -43,7 +43,43 @@ export class ListUserComponent implements OnInit {
   }
 
   /** Nid actions */
-  createNid() {
+  deleteNid(nid): void {
+    this.userService.deleteNid(nid.id).subscribe((data) => {
+      this.nids.splice(this.nids.indexOf(nid), 1);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  updateNid(nid): void {
+    this.userService.setterNid(nid);
+    this.router.navigate(['/nid']);
+  }
+
+  createNid(): void {
+    const nid = new Nid();
+    this.userService.setterNid(nid);
+    this.router.navigate(['/nid']);
+  }
+
+  /** Passport actions */
+  deletePassport(passport): void {
+    this.userService.deletePassport(passport.id).subscribe((data) => {
+      this.passports.splice(this.passports.indexOf(passport), 1);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  updatePassport(passport): void {
+    this.userService.setterPassport(passport);
+    this.router.navigate(['/passport']);
+  }
+
+  createPassport(): void {
+    const passport = new Passport();
+    this.userService.setterPassport(passport);
+    this.router.navigate(['/passport']);
   }
 
   /** User actions */

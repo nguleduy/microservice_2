@@ -27,12 +27,12 @@ export class UserService {
     return this.http.get(this.baseUrl + '/nids', this.options).pipe(catchError(this.handleError));
   }
 
-  getNid(id: number): any {
-    return this.http.get(this.baseUrl + '/nids/' + id, this.options).pipe(catchError(this.handleError));
+  getNid(nid: string): any {
+    return this.http.get(this.baseUrl + '/nids/' + nid, this.options).pipe(catchError(this.handleError));
   }
 
-  deleteNid(id: number): any {
-    return this.http.delete(this.baseUrl + '/nids/' + id, this.options).pipe(catchError(this.handleError));
+  deleteNid(nid: string): any {
+    return this.http.delete(this.baseUrl + '/nids/' + nid, this.options).pipe(catchError(this.handleError));
   }
 
   updateNid(nid: Nid): any {
@@ -56,12 +56,12 @@ export class UserService {
     return this.http.get(this.baseUrl + '/passports', this.options).pipe(catchError(this.handleError));
   }
 
-  getPassport(id: number): any {
-    return this.http.get(this.baseUrl + '/passports/' + id, this.options).pipe(catchError(this.handleError));
+  getPassport(ppid: string): any {
+    return this.http.get(this.baseUrl + '/passports/' + ppid, this.options).pipe(catchError(this.handleError));
   }
 
-  deletePassport(id: number): any {
-    return this.http.delete(this.baseUrl + '/passports/' + id, this.options).pipe(catchError(this.handleError));
+  deletePassport(ppid: string): any {
+    return this.http.delete(this.baseUrl + '/passports/' + ppid, this.options).pipe(catchError(this.handleError));
   }
 
   updatePassport(passport: Passport): any {

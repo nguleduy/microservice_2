@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.validation.constraints.NotBlank;
@@ -26,10 +25,9 @@ public class Nid implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
-  @GeneratedValue
   @NotBlank(message = "Enter NID Number")
   @Size(min = 13, max = 18, message = "Enter a valid NID Number")
-  private Long nid;
+  private String nid;
 
   @NotBlank(message = "Enter your first name")
   private String fName;

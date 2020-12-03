@@ -7,6 +7,10 @@ import com.example.demo.repository.INidRepository;
 import com.example.demo.repository.IPassportRepository;
 import com.example.demo.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -33,6 +40,9 @@ public class UserController {
   @Autowired
   private IPassportRepository iPassportRepository;
 
+  private Map<String, String> errors;
+
+
   /***
    *
    * Nid
@@ -42,19 +52,32 @@ public class UserController {
     return iNidRepository.findAll();
   }
 
-  @GetMapping("/nids/{id}")
-  public Nid getNid(@PathVariable Long id) {
-    return iNidRepository.findById(id).orElseThrow();
+  @GetMapping("/nids/{nid}")
+  public Nid getNid(@PathVariable String nid) {
+    return iNidRepository.findByNid(nid);
   }
 
   @PostMapping("/nid")
-  public Nid createNid(@RequestBody Nid newNid) {
-    return iNidRepository.save(newNid);
+  public ResponseEntity<Object> createNid(@RequestBody @Valid Nid newNid, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      errors = new HashMap<>();
+      for (FieldError error : bindingResult.getFieldErrors()) {
+        errors.put(error.getField(), error.getDefaultMessage());
+      }
+      return new ResponseEntity<>(errors, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    Nid n = iNidRepository.findByNid(newNid.getNid());
+    if (n != null) {
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
+    return new ResponseEntity<>(iNidRepository.save(newNid), HttpStatus.OK);
   }
 
-  @DeleteMapping("/nids/{id}")
-  public boolean deleteNid(@PathVariable Long id) {
-    iNidRepository.deleteById(id);
+  @DeleteMapping("/nids/{nid}")
+  public boolean deleteNid(@PathVariable String nid) {
+    iNidRepository.deleteById(nid);
     return true;
   }
 
@@ -62,6 +85,7 @@ public class UserController {
   public Nid updateNid(@RequestBody Nid newNid) {
     return iNidRepository.save(newNid);
   }
+
 
   /***
    *
@@ -72,19 +96,35 @@ public class UserController {
     return iPassportRepository.findAll();
   }
 
-  @GetMapping("/passports/{id}")
-  public Passport getPassport(Long id) {
-    return iPassportRepository.findById(id).orElseThrow();
+  @GetMapping("/passports/{ppid}")
+  public Passport getPassport(String ppid) {
+    return iPassportRepository.findById(ppid).orElseThrow();
   }
 
   @PostMapping("/passport")
-  public Passport createPassport(@RequestBody Passport newPassport) {
-    return iPassportRepository.save(newPassport);
+  public ResponseEntity<Object> createPassport(@RequestBody @Valid Passport newPassport, BindingResult bindingResult) {
+    if (bindingResult.hasFieldErrors()) {
+      errors = new HashMap<>();
+      for (FieldError error : bindingResult.getFieldErrors()) {
+        errors.put(error.getField(), error.getDefaultMessage());
+      }
+
+      return new ResponseEntity<>(errors, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    Passport passportPpid = iPassportRepository.findByPpid(newPassport.getPpid());
+    Passport passportNid = iPassportRepository.findByNid(newPassport.getNid());
+
+    if (passportPpid != null || passportNid != null) {
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
+    return new ResponseEntity<>(iPassportRepository.save(newPassport), HttpStatus.OK);
   }
 
-  @DeleteMapping("/passports/{id}")
-  public boolean deletePassport(@PathVariable Long id) {
-    iPassportRepository.deleteById(id);
+  @DeleteMapping("/passports/{ppid}")
+  public boolean deletePassport(@PathVariable String ppid) {
+    iPassportRepository.deleteById(ppid);
     return true;
   }
 
@@ -92,6 +132,7 @@ public class UserController {
   public Passport updatePassport(@RequestBody Passport newPassport) {
     return iPassportRepository.save(newPassport);
   }
+
 
   /***
    *

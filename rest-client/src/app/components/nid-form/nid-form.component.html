@@ -9,23 +9,23 @@
 <div class="container">
   <form (ngSubmit)="createNid()">
     <div class="form group">
-      <label for="fname" class="col-2 col-form-label">First Name</label>
-      <input type="text" name="fname" id="fname" class="form-control" [(ngModel)]="nid.fname">
+      <label for="fName" class="col-2 col-form-label">First Name</label>
+      <input type="text" name="fName" id="fName" class="form-control" [(ngModel)]="nid.fName">
     </div>
-    <div class="col-10" *ngIf="nidError.fname">
-      <span class="text text-denger">{{nidError.fname}}</span>
-    </div>
-
-    <div class="form group">
-      <label for="lname" class="col-2 col-form-label">Last Name</label>
-      <input type="text" name="lname" id="lname" class="form-control" [(ngModel)]="nid.lname">
-    </div>
-    <div class="col-10" *ngIf="nidError.lname">
-      <span class="text text-denger">{{nidError.lname}}</span>
+    <div class="col-10" *ngIf="nidError.fName">
+      <span class="text text-denger">{{nidError.fName}}</span>
     </div>
 
     <div class="form group">
-      <label for="fname" class="col-2 col-form-label">Nid</label>
+      <label for="lName" class="col-2 col-form-label">Last Name</label>
+      <input type="text" name="lName" id="lName" class="form-control" [(ngModel)]="nid.lName">
+    </div>
+    <div class="col-10" *ngIf="nidError.lName">
+      <span class="text text-denger">{{nidError.lName}}</span>
+    </div>
+
+    <div class="form group">
+      <label for="nid" class="col-2 col-form-label">Nid</label>
       <input type="text" name="nid" id="nid" class="form-control" [(ngModel)]="nid.nid">
     </div>
     <div class="col-10" *ngIf="nidError.nid">
@@ -33,7 +33,7 @@
     </div>
 
     <div class="form group">
-      <label for="lname" class="col-2 col-form-label">Passport</label>
+      <label for="ppid" class="col-2 col-form-label">Passport</label>
       <input type="text" name="ppid" id="ppid" class="form-control" [(ngModel)]="nid.ppid">
     </div>
     <div class="col-10" *ngIf="nidError.ppid">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="form group">
-      <label for="lname" class="col-2 col-form-label">Birthdate</label>
+      <label for="birthdate" class="col-2 col-form-label">Birthdate</label>
       <input type="text" name="birthdate" id="birthdate" class="form-control" [(ngModel)]="nid.birthdate">
     </div>
     <div class="col-10" *ngIf="nidError.birthdate">

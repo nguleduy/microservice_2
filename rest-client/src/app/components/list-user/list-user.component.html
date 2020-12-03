@@ -34,9 +34,9 @@
     </thead>
     <tbody>
     <tr *ngFor="let nid of nids">
-      <td>{{nid.id}}</td>
-      <td>{{nid.fname}}</td>
-      <td>{{nid.lname}}</td>
+      <td>{{$index + 1}}</td>
+      <td>{{nid.fName}}</td>
+      <td>{{nid.lName}}</td>
       <td>{{nid.nid}}</td>
       <td>{{nid.ppid}}</td>
       <td>{{nid.birthdate}}</td>
@@ -60,9 +60,9 @@
     </thead>
     <tbody>
     <tr *ngFor="let passport of passports">
-      <td>{{passport.id}}</td>
-      <td>{{passport.fname}}</td>
-      <td>{{passport.lname}}</td>
+      <td>{{$index + 1}}</td>
+      <td>{{passport.fName}}</td>
+      <td>{{passport.lName}}</td>
       <td>{{passport.email}}</td>
       <td>{{passport.nid}}</td>
       <td>{{passport.ppid}}</td>

@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {UserService} from './shared-service/user.service';
 import { NidFormComponent } from './components/nid-form/nid-form.component';
 import { PassportFormComponent } from './components/passport-form/passport-form.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   {path: '', component: ListUserComponent},
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],

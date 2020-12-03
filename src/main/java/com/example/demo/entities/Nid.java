@@ -35,9 +35,9 @@ public class Nid implements Serializable {
   @NotBlank(message = "Enter your last name")
   private String lastName;
 
-  @NotBlank(message = "Enter your ppid")
+  @NotBlank(message = "Enter your Passport Number")
   private String ppid;
 
-  @NotBlank(message = "Enter your birthdate")
+  @NotBlank(message = "Enter your DoB")
   private String birthdate;
 }

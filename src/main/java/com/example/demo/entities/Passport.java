@@ -24,7 +24,7 @@ public class Passport implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
-  @NotBlank(message = "Enter your ppid")
+  @NotBlank(message = "Enter your Passport Number")
   private String ppid;
 
   @Size(min = 13, max = 18, message = "Enter a valid Nid Number")
@@ -41,6 +41,6 @@ public class Passport implements Serializable {
   @NotBlank(message = "Enter your last name")
   private String lastName;
 
-  @NotBlank(message = "Enter your birthdate")
+  @NotBlank(message = "Enter your DoB")
   private String birthdate;
 }

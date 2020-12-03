@@ -30,10 +30,10 @@ public class Nid implements Serializable {
   private String nid;
 
   @NotBlank(message = "Enter your first name")
-  private String fName;
+  private String firstName;
 
   @NotBlank(message = "Enter your last name")
-  private String lName;
+  private String lastName;
 
   @NotBlank(message = "Enter your ppid")
   private String ppid;

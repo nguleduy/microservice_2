@@ -36,10 +36,10 @@ public class Passport implements Serializable {
   private String email;
 
   @NotBlank(message = "Enter your first name")
-  private String fName;
+  private String firstName;
 
   @NotBlank(message = "Enter your last name")
-  private String lName;
+  private String lastName;
 
   @NotBlank(message = "Enter your birthdate")
   private String birthdate;

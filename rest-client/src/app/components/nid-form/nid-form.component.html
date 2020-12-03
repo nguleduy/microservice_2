@@ -9,19 +9,19 @@
 <div class="container">
   <form (ngSubmit)="createNid()">
     <div class="form group">
-      <label for="fName" class="col-2 col-form-label">First Name</label>
-      <input type="text" name="fName" id="fName" class="form-control" [(ngModel)]="nid.fName">
+      <label for="firstName" class="col-2 col-form-label">First Name</label>
+      <input type="text" name="firstName" id="firstName" class="form-control" [(ngModel)]="nid.firstName">
     </div>
-    <div class="col-10" *ngIf="nidError.fName">
-      <span class="text text-denger">{{nidError.fName}}</span>
+    <div class="col-10" *ngIf="nidError.firstName">
+      <span class="text text-denger">{{nidError.firstName}}</span>
     </div>
 
     <div class="form group">
-      <label for="lName" class="col-2 col-form-label">Last Name</label>
-      <input type="text" name="lName" id="lName" class="form-control" [(ngModel)]="nid.lName">
+      <label for="lastName" class="col-2 col-form-label">Last Name</label>
+      <input type="text" name="lastName" id="lastName" class="form-control" [(ngModel)]="nid.lastName">
     </div>
-    <div class="col-10" *ngIf="nidError.lName">
-      <span class="text text-denger">{{nidError.lName}}</span>
+    <div class="col-10" *ngIf="nidError.lastName">
+      <span class="text text-denger">{{nidError.lastName}}</span>
     </div>
 
     <div class="form group">

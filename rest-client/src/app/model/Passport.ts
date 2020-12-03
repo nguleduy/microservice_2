@@ -1,7 +1,7 @@
 export class Passport {
   id: number;
-  fName: string;
-  lName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   nid: string;
   ppid: string;

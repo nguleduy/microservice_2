@@ -20,12 +20,12 @@ public class User {
   @GeneratedValue
   private Long id;
 
-  private String fName;
+  private String firstName;
 
-  private String lName;
+  private String lastName;
 
-  public User(String fName, String lName) {
-    this.fName = fName;
-    this.lName = lName;
+  public User(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 }

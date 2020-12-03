@@ -19,8 +19,8 @@ export class PassportFormComponent implements OnInit {
     this.passport = this.userService.getterPassport();
   }
 
-  processPassportForm() {
-    if (this.passport.id == undefined) {
+  processPassportForm(): void {
+    if (this.passport.id === undefined) {
       this.userService.createPassport(this.passport).subscribe((passport) => {
         console.log(passport);
         this.router.navigate(['/']);

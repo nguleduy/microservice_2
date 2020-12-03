@@ -19,8 +19,8 @@ export class NidFormComponent implements OnInit {
     this.nid = this.userService.getter();
   }
 
-  processNidForm() {
-    if (this.nid.id == undefined) {
+  processNidForm(): void {
+    if (this.nid.id === undefined) {
       this.userService.createNid(this.nid).subscribe((nid) => {
         console.log(nid);
         this.router.navigate(['/']);

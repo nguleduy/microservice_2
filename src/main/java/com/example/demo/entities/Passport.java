@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -27,6 +28,8 @@ public class Passport implements Serializable {
 
   @Id
   @GeneratedValue
+  @Size(min = 13, max = 18, message = "Enter a valid Nid Number")
+  @NotBlank(message = "Enter Nid Number")
   private Long nid;
 
   @Id

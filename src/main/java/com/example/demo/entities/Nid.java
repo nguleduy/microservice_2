@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -26,6 +27,8 @@ public class Nid implements Serializable {
 
   @Id
   @GeneratedValue
+  @NotBlank(message = "Enter NID Number")
+  @Size(min = 13, max = 18, message = "Enter a valid NID Number")
   private Long nid;
 
   @NotBlank(message = "Enter your first name")

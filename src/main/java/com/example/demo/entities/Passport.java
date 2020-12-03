@@ -27,7 +27,7 @@ public class Passport implements Serializable {
   @NotBlank(message = "Enter your Passport Number")
   private String ppid;
 
-  @Size(min = 13, max = 18, message = "Enter a valid Nid Number")
+  @Size(min = 13, max = 18, message = "Nid digit length min 13 & less 18")
   @NotBlank(message = "Enter Nid Number")
   private String nid;
 

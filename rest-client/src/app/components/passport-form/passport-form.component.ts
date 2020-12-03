@@ -20,7 +20,7 @@ export class PassportFormComponent implements OnInit {
   }
 
   processPassportForm(): void {
-    if (this.passport.id === undefined) {
+    if (this.passport.ppid === undefined) {
       this.userService.createPassport(this.passport).subscribe((passport) => {
         console.log(passport);
         this.router.navigate(['/']);

@@ -26,7 +26,7 @@ export class PassportListComponent implements OnInit {
 
   /********************* Passport actions */
   deletePassport(passport): void {
-    this.userService.deletePassport(passport.id).subscribe((data) => {
+    this.userService.deletePassport(passport.ppid).subscribe((data) => {
       this.passports.splice(this.passports.indexOf(passport), 1);
     }, (error) => {
       console.log(error);

@@ -10,6 +10,8 @@ import {PassportListComponent} from './components/passport-list/passport-list.co
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {UserService} from './shared-service/user.service';
+import { NidFormComponent } from './components/nid-form/nid-form.component';
+import { PassportFormComponent } from './components/passport-form/passport-form.component';
 
 const appRoutes: Routes = [
   {path: '', component: ListUserComponent},
@@ -24,7 +26,9 @@ const appRoutes: Routes = [
     ListUserComponent,
     UserFormComponent,
     NidListComponent,
-    PassportListComponent
+    PassportListComponent,
+    NidFormComponent,
+    PassportFormComponent
   ],
   imports: [
     BrowserModule,

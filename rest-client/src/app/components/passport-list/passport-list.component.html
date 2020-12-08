@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let passport of passports">
-      <td>{{passport.id}}</td>
+      <td>{{$index + 1}</td>
       <td>{{passport.firstName}}</td>
       <td>{{passport.lastName}}</td>
       <td>{{passport.email}}</td>

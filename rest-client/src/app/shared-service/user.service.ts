@@ -14,7 +14,6 @@ export class UserService {
   private baseUrl = 'http://localhost:8888/api';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   private options = {headers: this.headers};
-  private httpHeaders = {headers: new HttpHeaders({'content-type':'application/json'})};
 
   private user = new User();
   private nid = new Nid();

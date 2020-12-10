@@ -12,8 +12,9 @@ export class PassportFormComponent implements OnInit {
 
   public passport = new Passport();
   public passportError: Passport;
-  public isPassCreated: boolean = false;
-  public passportExist: boolean = false;
+  public isPassCreated = false;
+  public passportExist = false;
+  public isPassportCreated = false;
 
 
   constructor(private userService: UserService, private router: Router) {
@@ -23,7 +24,7 @@ export class PassportFormComponent implements OnInit {
     this.passport = this.userService.getterPassport();
   }
 
-  createPassport() {
+  createPassport(): void {
     this.userService.createPassport(this.passport).subscribe(
       data => {
         console.log(data);
@@ -35,13 +36,13 @@ export class PassportFormComponent implements OnInit {
       error => {
         this.passportError = error.error;
         this.isPassCreated = false;
-        if (error.status == 409) {
+        if (error.status === 409) {
           this.isPassCreated = false;
           this.passportExist = true;
         }
         console.log(error);
       }
-    )
+    );
   }
 
   processPassportForm(): void {

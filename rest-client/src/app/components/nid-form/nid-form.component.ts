@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class NidFormComponent implements OnInit {
 
-  public nid: Nid;
+  public nid = new Nid();
   public nidError: Nid;
   public isNidCreated = false;
   public nidExist = false;
@@ -32,7 +32,9 @@ export class NidFormComponent implements OnInit {
         this.nidError = new Nid();
       },
       error => {
+        console.log(error);
         this.nidError = error.error;
+        console.log(error.error);
         this.isNidCreated = false;
         if (error.status === 409) {
           this.isNidCreated = false;

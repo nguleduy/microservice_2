@@ -48,7 +48,7 @@
       <div class="col-10" *ngIf="nidError?.birthdate">
         <span class="text text-danger">{{nidError.birthdate}}</span>
       </div>
-      <input type="text" name="birthdate" id="birthdate" class="form-control" [(ngModel)]="nid.birthdate">
+      <input type="date" name="birthdate" id="birthdate" class="form-control" [(ngModel)]="nid.birthdate" placeholder="Choose a date">
     </div>
 
     <br>

@@ -16,7 +16,7 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.userService.getter();
+    // this.user = this.userService.getter();
   }
 
   processForm(): void {

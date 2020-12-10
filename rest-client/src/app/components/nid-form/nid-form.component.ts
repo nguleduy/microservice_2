@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class NidFormComponent implements OnInit {
 
-  public nid = new Nid();
+  public nid: Nid;
   public nidError: Nid;
   public isNidCreated = false;
   public nidExist = false;
@@ -44,7 +44,7 @@ export class NidFormComponent implements OnInit {
   }
 
   processNidForm(): void {
-    if (this.nid.id === undefined) {
+    if (this.nid.nid === undefined) {
       this.userService.createNid(this.nid).subscribe((nid) => {
         console.log(nid);
         this.router.navigate(['/']);

@@ -10,15 +10,17 @@ import {PassportListComponent} from './components/passport-list/passport-list.co
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {UserService} from './shared-service/user.service';
-import { NidFormComponent } from './components/nid-form/nid-form.component';
-import { PassportFormComponent } from './components/passport-form/passport-form.component';
+import {NidFormComponent} from './components/nid-form/nid-form.component';
+import {PassportFormComponent} from './components/passport-form/passport-form.component';
 import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: ListUserComponent},
+  {path: 'nidlist', component: NidListComponent},
+  {path: 'passportlist', component: PassportListComponent},
   {path: 'op', component: UserFormComponent},
-  {path: 'nids', component: NidListComponent},
-  {path: 'ppids', component: PassportListComponent}
+  {path: 'nids', component: NidFormComponent},
+  {path: 'ppids', component: PassportFormComponent}
 ];
 
 @NgModule({

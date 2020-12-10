@@ -44,7 +44,7 @@ export class ListUserComponent implements OnInit {
 
   /** Nid actions */
   deleteNid(nid): void {
-    this.userService.deleteNid(nid.id).subscribe((data) => {
+    this.userService.deleteNid(nid.nid).subscribe((data) => {
       this.nids.splice(this.nids.indexOf(nid), 1);
     }, (error) => {
       console.log(error);

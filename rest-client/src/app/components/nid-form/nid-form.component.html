@@ -7,45 +7,29 @@
 </div>
 
 <div class="container">
-  <form (ngSubmit)="createNid()">
+  <form (ngSubmit)="processNidForm()">
     <div class="form group">
-      <label for="firstName" class="col-2 col-form-label">First Name</label>
+      <label for="firstName">First Name</label>
       <input type="text" name="firstName" id="firstName" class="form-control" [(ngModel)]="nid.firstName">
     </div>
-    <div class="col-10" *ngIf="nidError.firstName">
-      <span class="text text-denger">{{nidError.firstName}}</span>
-    </div>
-
     <div class="form group">
-      <label for="lastName" class="col-2 col-form-label">Last Name</label>
+      <label for="lastName">Last Name</label>
       <input type="text" name="lastName" id="lastName" class="form-control" [(ngModel)]="nid.lastName">
     </div>
-    <div class="col-10" *ngIf="nidError.lastName">
-      <span class="text text-denger">{{nidError.lastName}}</span>
-    </div>
 
     <div class="form group">
-      <label for="nid" class="col-2 col-form-label">Nid</label>
+      <label for="nid">Nid</label>
       <input type="text" name="nid" id="nid" class="form-control" [(ngModel)]="nid.nid">
     </div>
-    <div class="col-10" *ngIf="nidError.nid">
-      <span class="text text-denger">{{nidError.nid}}</span>
-    </div>
 
     <div class="form group">
-      <label for="ppid" class="col-2 col-form-label">Passport</label>
+      <label for="ppid">Passport</label>
       <input type="text" name="ppid" id="ppid" class="form-control" [(ngModel)]="nid.ppid">
     </div>
-    <div class="col-10" *ngIf="nidError.ppid">
-      <span class="text text-denger">{{nidError.ppid}}</span>
-    </div>
 
     <div class="form group">
-      <label for="birthdate" class="col-2 col-form-label">Birthdate</label>
+      <label for="birthdate">Birthdate</label>
       <input type="text" name="birthdate" id="birthdate" class="form-control" [(ngModel)]="nid.birthdate">
-    </div>
-    <div class="col-10" *ngIf="nidError.birthdate">
-      <span class="text text-denger">{{nidError.birthdate}}</span>
     </div>
 
     <input type="submit" value="save" class="btn btn-success">

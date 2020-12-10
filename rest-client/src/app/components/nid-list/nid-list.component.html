@@ -9,8 +9,8 @@
     <th>Birthday</th>
     </thead>
     <tbody>
-    <tr *ngFor="let nid of nids">
-      <td>{{nid.id}}</td>
+    <tr *ngFor="let nid of nids; let i = index">
+      <td>{{i + 1}}</td>
       <td>{{nid.firstName}}</td>
       <td>{{nid.lastName}}</td>
       <td>{{nid.nid}}</td>

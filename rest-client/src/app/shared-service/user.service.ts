@@ -12,6 +12,10 @@ import {Passport} from '../model/Passport';
 export class UserService {
 
   private baseUrl = 'http://localhost:8888/api';
+  private userUrl = 'http://localhost:8777/api/user';
+  private pmUrl = 'http://localhost:8777/api/pm';
+  private adminUrl = 'http://localhost:8777/api/admin';
+
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   private options = {headers: this.headers};
 
@@ -20,6 +24,18 @@ export class UserService {
   private passport = new Passport();
 
   constructor(private http: HttpClient) {
+  }
+
+  getUserBoard(): Observable<string> {
+    return this.http.get(this.userUrl, {responseType: 'text'});
+  }
+
+  getPMBoard(): Observable<string> {
+    return this.http.get(this.pmUrl, {responseType: 'text'});
+  }
+
+  getAdminBoard(): Observable<string> {
+    return this.http.get(this.adminUrl, {responseType: 'text'});
   }
 
   /** Nid */

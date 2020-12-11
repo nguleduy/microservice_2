@@ -15,18 +15,34 @@ import {PassportFormComponent} from './components/passport-form/passport-form.co
 import {HttpClientModule} from '@angular/common/http';
 import {MapBoxComponent} from './components/map-box/map-box.component';
 import {MapService} from './shared-service/map.service';
-import { SmsListComponent } from './components/sms-list/sms-list.component';
+import {SmsListComponent} from './components/sms-list/sms-list.component';
 import {SmsService} from './shared-service/sms.service';
+import {AdminComponent} from './components/admin/admin.component';
+import {HomeComponent} from './components/home/home.component';
+import {LoginComponent} from './components/login/login.component';
+import {PmComponent} from './components/pm/pm.component';
+import {RegisterComponent} from './components/register/register.component';
+import {UserComponent} from './components/user/user.component';
+import {TokenStorageService} from './auth/token-storage.service';
+import {AuthService} from './auth/auth.service';
+import {httpInterceptorProviders} from './auth/auth-interceptor';
 
 const appRoutes: Routes = [
-  {path: '', component: ListUserComponent},
+  {path: 'changed', component: ListUserComponent},
   {path: 'smslist', component: SmsListComponent},
   {path: 'nidlist', component: NidListComponent},
   {path: 'passportlist', component: PassportListComponent},
   {path: 'op', component: UserFormComponent},
   {path: 'nid', component: NidFormComponent},
   {path: 'passport', component: PassportFormComponent},
-  {path: 'map', component: MapBoxComponent}
+  {path: 'map', component: MapBoxComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'user', component: UserComponent},
+  {path: 'pm', component: PmComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'auth/login', component: LoginComponent},
+  {path: 'signup', component: RegisterComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -39,7 +55,13 @@ const appRoutes: Routes = [
     NidFormComponent,
     PassportFormComponent,
     MapBoxComponent,
-    SmsListComponent
+    SmsListComponent,
+    AdminComponent,
+    HomeComponent,
+    LoginComponent,
+    PmComponent,
+    RegisterComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +70,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, MapService, SmsService],
+  providers: [UserService, MapService, SmsService, TokenStorageService, AuthService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

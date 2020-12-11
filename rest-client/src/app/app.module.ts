@@ -13,9 +13,12 @@ import {UserService} from './shared-service/user.service';
 import {NidFormComponent} from './components/nid-form/nid-form.component';
 import {PassportFormComponent} from './components/passport-form/passport-form.component';
 import {HttpClientModule} from '@angular/common/http';
+import {MapBoxComponent} from './components/map-box/map-box.component';
+import {MapService} from './shared-service/map.service';
 
 const appRoutes: Routes = [
-  {path: '', component: ListUserComponent},
+  {path: '', component: MapBoxComponent},
+  {path: 'changed', component: ListUserComponent},
   {path: 'nidlist', component: NidListComponent},
   {path: 'passportlist', component: PassportListComponent},
   {path: 'op', component: UserFormComponent},
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
     NidListComponent,
     PassportListComponent,
     NidFormComponent,
-    PassportFormComponent
+    PassportFormComponent,
+    MapBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService],
+  providers: [UserService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

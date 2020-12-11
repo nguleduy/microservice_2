@@ -1,13 +1,24 @@
 package com.example.smsservice;
 
+import com.example.smsservice.entities.Sms;
+import com.example.smsservice.repository.ISmsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SmsServiceApplication {
+public class SmsServiceApplication implements CommandLineRunner {
+
+  @Autowired
+  private ISmsRepository iSmsRepository;
 
   public static void main(String[] args) {
     SpringApplication.run(SmsServiceApplication.class, args);
   }
 
+  @Override
+  public void run(String... args) throws Exception {
+    iSmsRepository.save(new Sms("hello user, we would like to thank you.", "12/11/2020"));
+  }
 }

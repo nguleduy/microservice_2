@@ -15,15 +15,18 @@ import {PassportFormComponent} from './components/passport-form/passport-form.co
 import {HttpClientModule} from '@angular/common/http';
 import {MapBoxComponent} from './components/map-box/map-box.component';
 import {MapService} from './shared-service/map.service';
+import { SmsListComponent } from './components/sms-list/sms-list.component';
+import {SmsService} from './shared-service/sms.service';
 
 const appRoutes: Routes = [
-  {path: '', component: MapBoxComponent},
-  {path: 'changed', component: ListUserComponent},
+  {path: '', component: ListUserComponent},
+  {path: 'smslist', component: SmsListComponent},
   {path: 'nidlist', component: NidListComponent},
   {path: 'passportlist', component: PassportListComponent},
   {path: 'op', component: UserFormComponent},
-  {path: 'nids', component: NidFormComponent},
-  {path: 'ppids', component: PassportFormComponent}
+  {path: 'nid', component: NidFormComponent},
+  {path: 'passport', component: PassportFormComponent},
+  {path: 'map', component: MapBoxComponent}
 ];
 
 @NgModule({
@@ -35,7 +38,8 @@ const appRoutes: Routes = [
     PassportListComponent,
     NidFormComponent,
     PassportFormComponent,
-    MapBoxComponent
+    MapBoxComponent,
+    SmsListComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, MapService],
+  providers: [UserService, MapService, SmsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -4,6 +4,8 @@ import {UserService} from '../../shared-service/user.service';
 import {Router} from '@angular/router';
 import {Nid} from '../../model/Nid';
 import {Passport} from '../../model/Passport';
+import {Sms} from '../../model/Sms';
+import {SmsService} from '../../shared-service/sms.service';
 
 @Component({
   selector: 'app-list-user',
@@ -15,8 +17,12 @@ export class ListUserComponent implements OnInit {
   public users: User[];
   public nids: Nid[];
   public passports: Passport[];
+  public sms: Sms[];
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private smsService: SmsService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -38,6 +44,13 @@ export class ListUserComponent implements OnInit {
       console.log(passports);
       this.passports = passports;
     }, (error) => {
+      console.log(error);
+    });
+
+    this.smsService.getSms().subscribe(sms => {
+      console.log(sms);
+      this.sms = sms;
+    }, error => {
       console.log(error);
     });
   }
